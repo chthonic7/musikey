@@ -2,11 +2,8 @@ import re
 import sys
 import subprocess
 from myaudio import MyAudio
-# from pydub.playback import play
-# from pydub import AudioSegment
-# from pydub.generators import Sine
 
-win = subprocess.Popen(["xinput", "test", str(10)], stdout=subprocess.PIPE)
+win = subprocess.Popen(["xinput", "test", str(11)], stdout=subprocess.PIPE)
 
 # a = MyAudio(440)
 # b = MyAudio(493.88)

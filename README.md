@@ -3,7 +3,7 @@ A python script for musical typing
 
 ## Overview
 
-This is a simple script that reads your keystrokes and produces notes according to which key is pressed. Special keys such as "shift" or "ctrl" modify the notes produced by going up and down an octave. To stop the script, press the '0'(zero) key.
+This is a simple script, inspired by pydub, that reads your keystrokes and produces notes according to which key is pressed. Special keys such as "shift" or "ctrl" modify the notes produced by going up and down an octave. To stop the script, press the '0'(zero) key.
 
 As the project stands, the script is restricted to linux systems that use the X Window manager. This is because it leverages the xinput utility to read keystrokes.
 
@@ -11,7 +11,7 @@ For best results, one should disable key repeats on holding down a key and also 
 
 ## Installation
 
-This project requires the installation of pyaudio as well as pydub (though pydub is soon being dropped as a requirement). Both of these are readily available through pip.
+This project requires Python 3 as well as the installation of pyaudio, which readily available through pip. You will also need to have xinput installed, which should be available through most package managers.
 
 ## To-Do
 1. Extend key-note mappings to whole keyboard
