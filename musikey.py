@@ -17,18 +17,24 @@ win = subprocess.Popen(["xinput", "test", str(10)], stdout=subprocess.PIPE)
 # g = MyAudio(783.99)
 # all = [a,b,c,d,e,f,g]
 
-regices = {'z' : ('52', MyAudio(415.30)),
-           'a' : ('38', MyAudio(440)),
-           'q' : ('24', MyAudio(466.16)),
-           'x' : ('53', MyAudio(466.16)),
-           's' : ('39', MyAudio(493.88)),
-           'w' : ('25', MyAudio(523.25)),
-           'c' : ('54', MyAudio(493.88)),
-           'd' : ('40', MyAudio(523.25)),
-           'e' : ('26', MyAudio(554.37)),
-           'v' : ('55', MyAudio(554.37)),
-           'f' : ('41', MyAudio(587.33)),
-           'r' : ('27', MyAudio(622.25)),
+regices = {'z' : ('52', MyAudio(329.23)),
+           'a' : ('38', MyAudio(349.23)),
+           'q' : ('24', MyAudio(369.99)),
+           'x' : ('53', MyAudio(369.99)),
+           's' : ('39', MyAudio(392.00)),
+           'w' : ('25', MyAudio(415.30)),
+           'c' : ('54', MyAudio(415.30)),
+           'd' : ('40', MyAudio(440.00)),
+           'e' : ('26', MyAudio(466.16)),
+           'v' : ('55', MyAudio(466.16)),
+           'f' : ('41', MyAudio(493.88)),
+           'r' : ('27', MyAudio(523.25)),
+           'b' : ('56', MyAudio(493.88)),
+           'g' : ('42', MyAudio(523.25)),
+           't' : ('28', MyAudio(554.37)),
+           'n' : ('57', MyAudio(554.37)),
+           'h' : ('43', MyAudio(587.33)),
+           'y' : ('29', MyAudio(622.25)),
            'm' : ('58', MyAudio(622.25)),
            'j' : ('44', MyAudio(659.25)),
            'u' : ('30', MyAudio(698.46)),
@@ -41,15 +47,11 @@ regices = {'z' : ('52', MyAudio(415.30)),
            '/' : ('61', MyAudio(830.61)),
            ';' : ('47', MyAudio(880)),
            'p' : ('33', MyAudio(932.33)),
-           'shift' : ('50',MyAudio(0)),
-           'ctl' : ('37', MyAudio(0)),
+           'shiftL' : ('50',MyAudio(0)),
+           'shiftR' : ('62',MyAudio(0)),
+           'ctlL' : ('37', MyAudio(0)),
+           'ctlR' : ('105', MyAudio(0)),
            ## end of used keybindings
-           't' : ('28', MyAudio(0)),
-           'y' : ('29', MyAudio(0)),
-           'b' : ('56', MyAudio(0)),
-           'g' : ('42', MyAudio(0)),
-           'h' : ('43', MyAudio(0)),
-           'n' : ('57', MyAudio(0)),
            '1' : ('10', MyAudio(0)),
            '2' : ('11', MyAudio(0)),
            '3' : ('12', MyAudio(0)),
@@ -79,13 +81,13 @@ for lin in win.stdout:
         line = lin.decode("utf-8")
         if re.search(regex('p', '0'),line):
                 break;
-        elif re.search(regex('p','shift'),line):
+        elif re.search('('+regex('p','shiftL')+'|'+regex('p','shiftR')+')',line):
                 for k,i in regices.items(): i[1].doubleFreq()
-        elif re.search(regex('r','shift'),line):
+        elif re.search('('+regex('r','shiftL')+'|'+regex('r','shiftR')+')',line):
                 for k,i in regices.items(): i[1].halfFreq()
-        elif re.search(regex('p','ctl'),line):
+        elif re.search('('+regex('p','ctlL')+'|'+regex('p','ctlR')+')',line):
                 for k,i in regices.items(): i[1].halfFreq()
-        elif re.search(regex('r','ctl'),line):
+        elif re.search('('+regex('r','ctlL')+'|'+regex('r','ctlR')+')',line):
                 for k,i in regices.items(): i[1].doubleFreq()
         elif searchy('z',line): None
         elif searchy('a',line): None
@@ -99,6 +101,12 @@ for lin in win.stdout:
         elif searchy('v',line): None
         elif searchy('f',line): None
         elif searchy('r',line): None
+        elif searchy('b',line): None
+        elif searchy('g',line): None
+        elif searchy('t',line): None
+        elif searchy('n',line): None
+        elif searchy('h',line): None
+        elif searchy('y',line): None
         elif searchy('m',line): None
         elif searchy('j',line): None
         elif searchy('u',line): None
