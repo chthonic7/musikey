@@ -3,7 +3,7 @@ A python script for musical typing
 
 ## Overview
 
-This is a simple script that reads your keystrokes and produces notes according to which key is pressed. Special keys such as "shift" or "ctrl" modify the notes produced by going up and down an octave.
+This is a simple script that reads your keystrokes and produces notes according to which key is pressed. Special keys such as "shift" or "ctrl" modify the notes produced by going up and down an octave. To stop the script, press the '0'(zero) key.
 
 As the project stands, the script is restricted to linux systems that use the X Window manager. This is because it leverages the xinput utility to read keystrokes.
 
