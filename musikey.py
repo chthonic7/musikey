@@ -3,7 +3,10 @@ import sys
 import subprocess
 from myaudio import MyAudio
 
-win = subprocess.Popen(["xinput", "test", str(11)], stdout=subprocess.PIPE)
+xlist = subprocess.Popen(['xinput', 'list'], stdout=subprocess.PIPE)
+grep = subprocess.Popen(['grep', '-Po', 'id=\\K\\d+(?=.*slave\\s*keyboard)'], stdin=xlist.stdout, stdout=subprocess.PIPE)
+xinput = subprocess.Popen(['xargs', '-P0', '-n1', 'xinput', 'test'], stdin=grep.stdout, stdout=subprocess.PIPE)
+win=xinput.stdout
 
 # a = MyAudio(440)
 # b = MyAudio(493.88)
@@ -74,7 +77,7 @@ def searchy(val,line):
         return True
 
 
-for lin in win.stdout:
+for lin in win:
         line = lin.decode("utf-8")
         if re.search(regex('p', '0'),line):
                 break;
